@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+ 	<ui:composition template="../template/common/commonLayout.xhtml"> 
+ 		<ui:define name="content"> 
+		
+				<h:form> 
+					<p:panel style="display: inline-block;">
+	
+	 				<h:form> 
+	 				
+	 				
+	 					<p:dataTable var="person" value="#{usersBean.persons}" 
+	 						draggableColumns="true"
+	 						emptyMessage="Lista Vuota" 
+	 						paginator="true" 
+	 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        	rowsPerPageTemplate="5,10,15"
+                        	sortBy="#{person.name}" 
+                        	sortOrder="ascending"
+	 						>
+	 					
+						    <p:column headerText="#{msg['name']}" sortBy="#{person.name}">
+						        <h:outputText value="#{person.name}" />
+						    </p:column>
+						 
+						    <p:column headerText="#{msg['surname']}" sortBy="#{person.surname}">
+						        <h:outputText value="#{person.surname}" />
+						    </p:column>
+						 
+						    <p:column headerText="#{msg['email']}">
+						        <h:outputText value="#{person.email}" />
+						    </p:column>
+
+						    <p:column headerText="#{msg['age']}">
+						        <h:outputText value="#{person.age}" />
+						    </p:column>
+						    
+						</p:dataTable>
+						
+						<br></br>
+						
+						<p:commandButton value="Registrazione" ajax="false" immediate="false"
+										action="/ui/registration.xhtml" />
+					</h:form>
+					</p:panel>
+
+				</h:form>
+
+		</ui:define> 
+	</ui:composition> 
+</html>

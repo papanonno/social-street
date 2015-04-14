@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+ 	<ui:composition template="../template/common/commonLayout.xhtml"> 
+ 		<ui:define name="content"> 
+ 		
+ 				<h:form> 
+
+				</h:form>
+				
+				<br></br>
+				
+				<h:form> 
+					<p:panel style="display: inline-block;">
+						<p:messages id="error" autoUpdate="true" closable="true" />
+
+						<h:panelGrid columns="2">
+					
+								<p:outputLabel value="#{msg['name']}" for="name" />
+								<p:inputText value="#{registrationBean.person.name}"
+									required="true" id="name"  />
+								<p:outputLabel value="#{msg['surname']}" for="surname" />
+								<p:inputText value="#{registrationBean.person.surname}"
+									required="true" id="surname" />
+								<p:outputLabel value="#{msg['age']}" for="age" />
+								<p:inputMask value="#{registrationBean.person.age}"
+									required="true" id="age" mask="?999" />
+								<p:outputLabel value="#{msg['birthday']}" for="birthday" />
+								<p:calendar value="#{registrationBean.person.birthday}"
+									required="true" id="birthday"  />
+								<p:outputLabel value="#{msg['gender']}" for="gender" />
+							    <p:selectOneMenu id="gender" value="#{registrationBean.person.gender}">
+						            <f:selectItems value="#{genderBean.genderValues}" />
+						        </p:selectOneMenu>
+						        <p:outputLabel value="#{msg['email']}" for="email" />
+								<p:inputText value="#{registrationBean.person.email}"
+									required="true" id="email"  />
+								<p:outputLabel value="#{msg['password']}" for="password" />
+								<p:password value="#{registrationBean.person.password}"
+									required="true" id="password" feedback="true" />
+									
+						        <ui:remove>
+							        <p:outputLabel value="#{msg['city']}" for="city" />
+	       							<p:autoComplete id="city" minQueryLength="3" value="#{registrationBean.city}" 
+	       											completeMethod="#{registrationBean.autocompleter.autoComplete}" 
+	       											scrollHeight="300"
+	       											effect="fade">
+	       								<p:ajax event="itemSelect" listener="#{registrationBean.autocompleter.handleSelect}" resetValues="true"/>
+	       							</p:autoComplete>
+ 								</ui:remove>
+
+						</h:panelGrid>
+						
+						<p:commandButton value="Registra" ajax="false"
+							action="#{registrationBean.registration}" />
+							
+						<p:commandButton value="Lista Utenti" ajax="false" immediate="true"
+								action="USERS" />
+
+						
+					</p:panel>
+					
+
+				</h:form>
+
+		</ui:define> 
+	</ui:composition> 
+</html>

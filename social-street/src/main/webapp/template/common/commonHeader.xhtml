@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+      
+	    <ui:composition>		
+			<h:head>
+
+				<table width="100%">
+					<tr>
+						<td>
+									<a href="">
+										<img src="#{request.contextPath}/images/logo.gif" alt="Logo" 
+														style="margin-left: 10px;margin-right: 10px; width: 70px; float: left;"/>
+									</a>
+						</td>
+						<td>
+									<p>
+										<h:outputText value="#{msg['social.street']}">
+										</h:outputText>
+									</p>
+						</td>
+						<td>
+							<h:form>
+									<h:selectOneMenu value="#{language.localeCode}" onchange="submit()"
+										valueChangeListener="#{language.countryLocaleCodeChanged}" >
+							   			<f:selectItems value="#{language.countriesInMap}" /> 
+							   		</h:selectOneMenu>
+							 </h:form>
+						</td>
+					</tr>			
+				</table>
+
+				
+
+			</h:head>	
+	    </ui:composition>
+
+</html>

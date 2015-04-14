@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+ 	<ui:composition template="../template/common/commonLayout.xhtml"> 
+ 		<ui:define name="content"> 
+		
+				<h:form> 
+					<p:panel style="display: inline-block;">
+
+						<h:panelGrid columns="3">
+						
+								<p:outputLabel value="#{msg['registered.user']}" />
+								<p:outputLabel value="#{registrationBean.person.name}" />
+								<p:outputLabel value="#{registrationBean.person.surname}" />
+						</h:panelGrid>
+					</p:panel>
+
+				</h:form>
+
+		</ui:define> 
+	</ui:composition> 
+</html>

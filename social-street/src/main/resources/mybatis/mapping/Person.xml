@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="socialstreet.model.query.PersonManager">
+
+
+    <resultMap id="Persons" type="socialstreet.model.Person">
+        <result column="NAME" property="name" javaType="string" jdbcType="VARCHAR"/>
+        <result column="SURNAME" property="surname" javaType="string" jdbcType="VARCHAR"/>
+        <result column="AGE" property="age" javaType="Integer" jdbcType="NUMERIC"/>
+        <result column="BIRTHDAY" property="birthday" javaType="date" jdbcType="DATE"/>
+        <result column="PASSWORD" property="password" javaType="string" jdbcType="VARCHAR"/>
+        <result column="EMAIL" property="email" javaType="string" jdbcType="VARCHAR"/>
+        <result column="GENDER" property="gender" javaType="string" jdbcType="VARCHAR"/>
+    </resultMap>
+   
+    <insert id="createPersonTable" >
+		CREATE TABLE IF NOT EXISTS PERSON (
+            NAME  VARCHAR(50),
+            SURNAME  VARCHAR(50),
+            AGE INT,
+            GENDER VARCHAR(50),
+            BIRTHDAY DATE,
+            PASSWORD VARCHAR(50),
+            EMAIL VARCHAR(100) NOT NULL PRIMARY KEY
+	    )
+	</insert>
+	
+	<insert id="insert" parameterType="socialstreet.model.Person" keyProperty="email">
+		INSERT into PERSON values (#{name}, #{surname}, #{age}, #{gender}, #{birthday}, #{password}, #{email});
+	</insert>
+	
+	<select id='getByEmail' parameterType='string' resultType='socialstreet.model.Person'>
+	     SELECT *
+	     FROM PERSON 
+	     WHERE EMAIL = #{email}
+  </select>
+
+  <select id='getAllPersons' resultMap="Persons">
+   SELECT * FROM PERSON
+  </select>
+
+  <update id='update' parameterType="socialstreet.model.Person">
+    UPDATE PERSON 
+    SET
+	     PASSWORD= #{password},
+	     NAME = #{name},
+	     SURNAME = #{surname},
+	     GENDER = #{gender},
+	     AGE = #{age},
+	     BIRTHDAY = #{birthday}
+    WHERE EMAIL = #{email}
+  </update>
+
+  <delete id='delete' parameterType='string'>
+    DELETE FROM PERSON WHERE EMAIL = #{email}
+  </delete>
+	
+
+</mapper>
