@@ -11,10 +11,6 @@ import javax.faces.bean.ViewScoped;
 
 import lombok.Getter;
 import lombok.Setter;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import socialstreet.controller.PersonService;
 import socialstreet.model.Person;
 import socialstreet.person.UsersRequest;
@@ -25,7 +21,7 @@ import socialstreet.person.UsersRequest;
 	
 		private static final long serialVersionUID = 1L;
 		
-		private static Log logger = LogFactory.getLog(UsersBean.class);
+		//private static Log logger = LogFactory.getLog(UsersBean.class);
 
 		@ManagedProperty(value="#{PersonService}")
 		@Setter
