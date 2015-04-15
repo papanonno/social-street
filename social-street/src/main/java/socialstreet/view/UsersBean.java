@@ -30,7 +30,6 @@ import socialstreet.person.UsersRequest;
 		@Getter
 		private List<Person> persons = new ArrayList<Person>();
 		
-		
 		@PostConstruct
 		public void init(){
 			
