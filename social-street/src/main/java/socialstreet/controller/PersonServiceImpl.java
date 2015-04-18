@@ -49,6 +49,7 @@ public class PersonServiceImpl implements PersonService, Serializable {
 	      mapper = sqlSession.getMapper(PersonManager.class);
 	      mapper.insert(person);
 	      sqlSession.commit();
+	      
 		}catch(Exception e){
 			
 			return false;
