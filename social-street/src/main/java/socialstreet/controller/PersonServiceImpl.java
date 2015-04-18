@@ -56,7 +56,6 @@ public class PersonServiceImpl implements PersonService, Serializable {
 		} finally {
 			sqlSession.close(); 
 	    }
-		
 		return true;
 	}
 
