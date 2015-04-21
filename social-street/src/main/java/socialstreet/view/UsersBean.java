@@ -12,6 +12,7 @@ import javax.faces.bean.ViewScoped;
 import lombok.Getter;
 import lombok.Setter;
 import socialstreet.controller.PersonService;
+import socialstreet.model.LazyPersonDataModel;
 import socialstreet.model.Person;
 import socialstreet.person.UsersRequest;
 
@@ -27,14 +28,19 @@ import socialstreet.person.UsersRequest;
 		@Setter
 		private PersonService personService;
 		
+//		@Getter
+//		private List<Person> persons = new ArrayList<Person>();
+		
 		@Getter
-		private List<Person> persons = new ArrayList<Person>();
+		private LazyPersonDataModel persons;
 		
 		@PostConstruct
 		public void init(){
 			
-			UsersRequest request = new UsersRequest();
-			persons = personService.getUsers(request).getElements();
+			persons = new LazyPersonDataModel(personService);
+//			UsersRequest request = new UsersRequest();
+//			
+//			persons = personService.getUsersPaginate(request).getElements();
 		}
 
 }

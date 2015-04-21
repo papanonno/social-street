@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -146,5 +147,50 @@ public class PersonServiceImpl implements PersonService, Serializable {
 		return response;
 	}
 	
+	public int countPersons() {
+		
+		SqlSession sqlSession = Utils.getSqlSession();
+		sqlSession.getConfiguration().addMapper(Person.class);
+		
+		try {
+	      mapper = sqlSession.getMapper(PersonManager.class);
+	      return  mapper.countPersons();
+		}catch(Exception e){
+			
+			return -1;
+		} finally {
+			sqlSession.close(); 
+	    }
+
+	}
+	
+	public UsersResponse getUsersPaginate(UsersRequest request) {
+		
+		
+		UsersResponse response = new UsersResponse();
+		
+		SqlSession sqlSession = Utils.getSqlSession();
+		sqlSession.getConfiguration().addMapper(Person.class);
+		
+		List<Person> persons = null;
+		
+		try {
+	      mapper = sqlSession.getMapper(PersonManager.class);
+	      RowBounds rowBounds = new RowBounds(request.getFirstResult(), request.getMaxResults());
+	      persons = sqlSession.selectList("getAllPersons", null, rowBounds);
+
+		}catch(Exception e){
+			
+			response.setStatusCode(BaseResponse.GENERIC_ERROR_CODE);
+			return response;
+		} finally {
+			sqlSession.close(); 
+	    }
+		
+		response.setElements(persons);
+		response.setTotalUnrangedElements(countPersons());
+		response.setStatusCode(BaseResponse.OK_STATUS_CODE);
+		return response;
+	}
 
 }

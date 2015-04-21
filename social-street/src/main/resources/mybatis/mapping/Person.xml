@@ -39,6 +39,10 @@
   <select id='getAllPersons' resultMap="Persons">
    SELECT * FROM PERSON
   </select>
+  
+    <select id='countPersons' resultType="int">
+   		SELECT COUNT(*) FROM PERSON;
+  	</select>
 
   <update id='update' parameterType="socialstreet.model.Person">
     UPDATE PERSON 

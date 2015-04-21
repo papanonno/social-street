@@ -20,5 +20,7 @@ public interface PersonManager {
 	Person getByEmail(String email);
 	
 	List<Person> getAllPersons();
+	
+	int countPersons();
 
 }

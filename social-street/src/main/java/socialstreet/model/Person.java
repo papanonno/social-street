@@ -3,13 +3,16 @@ package socialstreet.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import socialstreet.LazyObject;
 import lombok.Data;
 
 @Data
-public class Person implements Serializable{
+public class Person implements Serializable,LazyObject{
 	
 
 	private static final long serialVersionUID = 1L;
+	
+	private String id;
 
 	private String name;
 	

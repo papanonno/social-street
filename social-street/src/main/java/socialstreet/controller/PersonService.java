@@ -18,5 +18,7 @@ public interface PersonService {
 	public Person getUserByEmail(String email);
 	
 	public UsersResponse getUsers(UsersRequest request);
+	
+	public UsersResponse getUsersPaginate(UsersRequest request);
 
 }
