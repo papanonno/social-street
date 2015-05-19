@@ -12,9 +12,11 @@ public class BaseRequestMultipage extends BaseRequest{
 		ASCENDING, DESCENDING, UNSORTED
 	}
 	
-	protected SortOrder sortOrder = SortOrder.UNSORTED;
+	private SortOrder sortOrder = SortOrder.UNSORTED;
+	
+	private String sortField;
 
-	protected boolean rangeQuery = false;
+	private boolean rangeQuery = false;
 	
 	/**
 	 * The first result index for paginated results.

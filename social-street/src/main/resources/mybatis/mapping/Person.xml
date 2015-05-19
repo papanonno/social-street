@@ -5,8 +5,8 @@
 
 
     <resultMap id="Persons" type="socialstreet.model.Person">
-        <result column="NAME" property="name" javaType="string" jdbcType="VARCHAR"/>
-        <result column="SURNAME" property="surname" javaType="string" jdbcType="VARCHAR"/>
+        <result column="name" property="name" javaType="string" jdbcType="VARCHAR"/>
+        <result column="surname" property="surname" javaType="string" jdbcType="VARCHAR"/>
         <result column="AGE" property="age" javaType="Integer" jdbcType="NUMERIC"/>
         <result column="BIRTHDAY" property="birthday" javaType="date" jdbcType="DATE"/>
         <result column="PASSWORD" property="password" javaType="string" jdbcType="VARCHAR"/>
@@ -38,6 +38,7 @@
 
   <select id='getAllPersons' resultMap="Persons">
    SELECT * FROM PERSON
+   ORDER BY ${sortColumn} ${sortOrder}
   </select>
   
     <select id='countPersons' resultType="int">

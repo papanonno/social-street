@@ -19,7 +19,7 @@ public interface PersonService {
 	
 	public UsersResponse getUsers(UsersRequest request);
 	
-	public UsersResponse getUsersPaginate(UsersRequest request);
+	public UsersResponse getPersons(UsersRequest request);
 
 	
 }

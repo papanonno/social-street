@@ -1,20 +1,26 @@
 package socialstreet.controller;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.transaction.annotation.Transactional;
 
+import socialstreet.BaseRequestMultipage.SortOrder;
 import socialstreet.BaseResponse;
 import socialstreet.Utils;
 import socialstreet.model.Person;
 import socialstreet.model.query.PersonManager;
 import socialstreet.person.UsersRequest;
 import socialstreet.person.UsersResponse;
+import socialstreet.view.RegistrationBean;
 
 @Transactional
 public class PersonServiceImpl implements PersonService, Serializable {
@@ -23,6 +29,8 @@ public class PersonServiceImpl implements PersonService, Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private static Log logger = LogFactory.getLog(RegistrationBean.class);
 	
 	PersonManager mapper;
 
@@ -164,7 +172,7 @@ public class PersonServiceImpl implements PersonService, Serializable {
 
 	}
 	
-	public UsersResponse getUsersPaginate(UsersRequest request) {
+	public UsersResponse getPersons(UsersRequest request) {
 		
 		
 		UsersResponse response = new UsersResponse();
@@ -176,8 +184,25 @@ public class PersonServiceImpl implements PersonService, Serializable {
 		
 		try {
 	      mapper = sqlSession.getMapper(PersonManager.class);
+	      
+	      
+	      Map<String, String> params = new HashMap<String, String>();
+	      String sortField = request.getSortField();
+	      params.put("sortOrder", "ASC"); 
+	      if(sortField!=null){
+	    	  params.put("sortColumn", sortField);
+		      if (request.getSortOrder().equals(SortOrder.ASCENDING)) {
+		        params.put("sortOrder", "ASC");        
+		      } else {
+		        params.put("sortOrder", "DESC");
+		      }
+	      }
+
+	      
 	      RowBounds rowBounds = new RowBounds(request.getFirstResult(), request.getMaxResults());
-	      persons = sqlSession.selectList("getAllPersons", null, rowBounds);
+	      persons = sqlSession.selectList("getAllPersons", params, rowBounds);
+	      
+	      logger.info("persons" + persons);
 
 		}catch(Exception e){
 			

@@ -26,7 +26,7 @@ public class LazyPersonDataModel extends LazyObjectDataModel<Person> {
 
 	@Override
 	protected BaseResponseMultipage<Person> runRequest(BaseRequestMultipage usersRequest) {
-		BaseResponseMultipage<Person> response = personService.getUsersPaginate((UsersRequest) usersRequest);
+		BaseResponseMultipage<Person> response = personService.getPersons((UsersRequest) usersRequest);
 		return response;
 	}
 
@@ -37,6 +37,17 @@ public class LazyPersonDataModel extends LazyObjectDataModel<Person> {
 		request.setFirstResult(first);
 		request.setMaxResults(pageSize);
 		request.setRangeQuery(true);
+		request.setSortField(sortField);
+		switch (sortOrder) {
+		case ASCENDING:
+			request.setSortOrder(BaseRequestMultipage.SortOrder.ASCENDING);
+			break;
+		case DESCENDING:
+			request.setSortOrder(BaseRequestMultipage.SortOrder.DESCENDING);
+			break;
+		case UNSORTED:
+			request.setSortOrder(BaseRequestMultipage.SortOrder.UNSORTED);
+		}
 	}
 
 }

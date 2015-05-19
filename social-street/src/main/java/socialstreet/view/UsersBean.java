@@ -1,8 +1,6 @@
 package socialstreet.view;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -13,8 +11,6 @@ import lombok.Getter;
 import lombok.Setter;
 import socialstreet.controller.PersonService;
 import socialstreet.model.LazyPersonDataModel;
-import socialstreet.model.Person;
-import socialstreet.person.UsersRequest;
 
 	@ManagedBean(name="usersBean")
 	@ViewScoped
@@ -40,7 +36,7 @@ import socialstreet.person.UsersRequest;
 			persons = new LazyPersonDataModel(personService);
 //			UsersRequest request = new UsersRequest();
 //			
-//			persons = personService.getUsersPaginate(request).getElements();
+//			persons = personService.getPersons(request).getElements();
 		}
 
 }
