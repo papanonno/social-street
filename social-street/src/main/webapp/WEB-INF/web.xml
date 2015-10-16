@@ -12,7 +12,7 @@
 	
 	<welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
-        <welcome-file>ui/registration.xhtml</welcome-file>
+        <welcome-file>ui/users.xhtml</welcome-file>
     </welcome-file-list>
 	
 	<servlet>

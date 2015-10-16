@@ -1,3 +1,6 @@
+
+
+
 package socialstreet;
 
 
@@ -11,6 +14,7 @@ import org.primefaces.model.SortOrder;
  * Base class for Lazy Data Model objects requests this class interacts with
  * PrimeFaces data table with lazy loading enabled and sets the base values
  * (sorting and range) for the request
+
  */
 public abstract class LazyObjectDataModel<T extends LazyObject> extends LazyDataModel<T> {
 

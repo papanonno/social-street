@@ -13,20 +13,20 @@
 				<h:form> 
 					<p:panel style="display: inline-block;">
 	
-	 				<h:form> 
-	 				
+	 				<h:form prependId="false"> 
 	 				
 	 					<p:dataTable var="person" value="#{usersBean.persons}" 
 	 						draggableColumns="true"
 	 						emptyMessage="Lista Vuota" 
 	 						paginator="true" 
 	 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                        	rowsPerPageTemplate="5,10,15"
-                        	rows="5"
+                        	rowsPerPageTemplate="15,20,25"
+                        	rows="15"
                         	paginatorAlwaysVisible="false"
-                        	lazy="true"
+                        	lazy="true" 
                         	liveResize="true" 
-                        	sortBy="#{person.name}" sortOrder="ASCENDING"
+                        	sortBy="#{person.name}" 
+                        	sortOrder="ASCENDING"
 	 						>
 	 					
 						    <p:column headerText="#{msg['name']}" sortBy="#{person.name}">
@@ -45,11 +45,17 @@
 						        <h:outputText value="#{person.age}" />
 						    </p:column>
 						    
+						     <p:column>
+						     	<p:commandButton action="#{personBean.updatePerson}" icon="ui-icon-pencil">
+
+						     	</p:commandButton>
+						     </p:column>
+						    
 						</p:dataTable>
 						
 						<br></br>
 						
-						<p:commandButton value="Registrazione" ajax="false" immediate="false"
+						<p:commandButton value="Registrazione" ajax="false" 
 										action="/ui/registration.xhtml" />
 					</h:form>
 					</p:panel>

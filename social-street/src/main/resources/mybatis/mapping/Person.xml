@@ -21,7 +21,7 @@
             AGE INT,
             GENDER VARCHAR(50),
             BIRTHDAY DATE,
-            PASSWORD VARCHAR(50),
+            PASSWORD VARCHAR(50) NOT NULL,
             EMAIL VARCHAR(100) NOT NULL PRIMARY KEY
 	    )
 	</insert>

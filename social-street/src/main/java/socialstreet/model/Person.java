@@ -3,8 +3,9 @@ package socialstreet.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import socialstreet.LazyObject;
 import lombok.Data;
+import socialstreet.LazyObject;
+
 
 @Data
 public class Person implements Serializable,LazyObject{
@@ -34,10 +35,8 @@ public class Person implements Serializable,LazyObject{
 	 */
 	private String gender;
 	
-	
 	private Date birthday;
-	
-	
+		
 	/**
 	 *
 	 * Gender Enum Male and Female

@@ -20,7 +20,7 @@ import socialstreet.model.Person;
 import socialstreet.model.query.PersonManager;
 import socialstreet.person.UsersRequest;
 import socialstreet.person.UsersResponse;
-import socialstreet.view.RegistrationBean;
+import socialstreet.view.PersonBean;
 
 @Transactional
 public class PersonServiceImpl implements PersonService, Serializable {
@@ -30,7 +30,7 @@ public class PersonServiceImpl implements PersonService, Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private static Log logger = LogFactory.getLog(RegistrationBean.class);
+	private static Log logger = LogFactory.getLog(PersonServiceImpl.class);
 	
 	PersonManager mapper;
 

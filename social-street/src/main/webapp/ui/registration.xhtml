@@ -9,10 +9,7 @@
 
  	<ui:composition template="../template/common/commonLayout.xhtml"> 
  		<ui:define name="content"> 
- 		
- 				<h:form> 
 
-				</h:form>
 				
 				<br></br>
 				
@@ -23,42 +20,42 @@
 						<h:panelGrid columns="2">
 					
 								<p:outputLabel value="#{msg['name']}" for="name" />
-								<p:inputText value="#{registrationBean.person.name}"
+								<p:inputText value="#{personBean.person.name}"
 									required="true" id="name"  />
 								<p:outputLabel value="#{msg['surname']}" for="surname" />
-								<p:inputText value="#{registrationBean.person.surname}"
+								<p:inputText value="#{personBean.person.surname}"
 									required="true" id="surname" />
 								<p:outputLabel value="#{msg['age']}" for="age" />
-								<p:inputMask value="#{registrationBean.person.age}"
+								<p:inputMask value="#{personBean.person.age}"
 									required="true" id="age" mask="?999" />
 								<p:outputLabel value="#{msg['birthday']}" for="birthday" />
-								<p:calendar value="#{registrationBean.person.birthday}"
+								<p:calendar value="#{personBean.person.birthday}"
 									required="true" id="birthday"  />
 								<p:outputLabel value="#{msg['gender']}" for="gender" />
-							    <p:selectOneMenu id="gender" value="#{registrationBean.person.gender}">
+							    <p:selectOneMenu id="gender" value="#{personBean.person.gender}">
 						            <f:selectItems value="#{genderBean.genderValues}" />
 						        </p:selectOneMenu>
 						        <p:outputLabel value="#{msg['email']}" for="email" />
-								<p:inputText value="#{registrationBean.person.email}"
+								<p:inputText value="#{personBean.person.email}"
 									required="true" id="email"  />
 								<p:outputLabel value="#{msg['password']}" for="password" />
-								<p:password value="#{registrationBean.person.password}"
+								<p:password value="#{personBean.person.password}"
 									required="true" id="password" feedback="true" />
 									
 						        <ui:remove>
 							        <p:outputLabel value="#{msg['city']}" for="city" />
-	       							<p:autoComplete id="city" minQueryLength="3" value="#{registrationBean.city}" 
-	       											completeMethod="#{registrationBean.autocompleter.autoComplete}" 
+	       							<p:autoComplete id="city" minQueryLength="3" value="#{personBean.city}" 
+	       											completeMethod="#{personBean.autocompleter.autoComplete}" 
 	       											scrollHeight="300"
 	       											effect="fade">
-	       								<p:ajax event="itemSelect" listener="#{registrationBean.autocompleter.handleSelect}" resetValues="true"/>
+	       								<p:ajax event="itemSelect" listener="#{personBean.autocompleter.handleSelect}" resetValues="true"/>
 	       							</p:autoComplete>
  								</ui:remove>
 
 						</h:panelGrid>
 						
 						<p:commandButton value="Registra" ajax="false"
-							action="#{registrationBean.registration}" />
+							action="#{personBean.registration}" />
 							
 						<p:commandButton value="Lista Utenti" ajax="false" immediate="true"
 								action="USERS" />

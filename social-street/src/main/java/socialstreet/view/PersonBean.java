@@ -19,13 +19,13 @@ import socialstreet.controller.PersonService;
 import socialstreet.model.Person;
 import socialstreet.view.autocompleter.City;
 
-	@ManagedBean(name="registrationBean")
+	@ManagedBean(name="personBean")
 	@SessionScoped
-	public class RegistrationBean implements Serializable{
+	public class PersonBean implements Serializable{
 	
 		private static final long serialVersionUID = 1L;
 		
-		private static Log logger = LogFactory.getLog(RegistrationBean.class);
+		private static Log logger = LogFactory.getLog(PersonBean.class);
 
 		@ManagedProperty(value="#{PersonService}")
 		@Setter
@@ -51,9 +51,9 @@ import socialstreet.view.autocompleter.City;
 			
 			boolean esito = personService.register(person);
 			
-			logger.info("[RegistrationBean] registration started");
+			logger.info("[personBean] registration started");
 						
-			if(esito){
+			if(!esito){
 			    ResourceBundle bundle = ResourceBundle.getBundle("locale.labels", FacesContext.getCurrentInstance().getViewRoot().getLocale());
 			    String text = bundle.getString("error.insert");
 				FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, text, text);
@@ -61,7 +61,16 @@ import socialstreet.view.autocompleter.City;
 				return "";
 			}
 			
-			return "CONFIRM";
+			return "USERS";
 		}
+		
+
+		public String updatePerson(){
+			
+
+			return "UPDATE";
+		}
+		
+		
 
 }
