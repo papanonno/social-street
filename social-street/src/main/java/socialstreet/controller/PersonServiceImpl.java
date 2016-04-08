@@ -20,7 +20,6 @@ import socialstreet.model.Person;
 import socialstreet.model.query.PersonManager;
 import socialstreet.person.UsersRequest;
 import socialstreet.person.UsersResponse;
-import socialstreet.view.PersonBean;
 
 @Transactional
 public class PersonServiceImpl implements PersonService, Serializable {
@@ -48,7 +47,6 @@ public class PersonServiceImpl implements PersonService, Serializable {
 		
 	}
 
-	
 	public boolean register(Person person) {
 
 		SqlSession sqlSession = Utils.getSqlSession();

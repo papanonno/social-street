@@ -10,12 +10,10 @@
  	<ui:composition template="../template/common/commonLayout.xhtml"> 
  		<ui:define name="content"> 
 		
-				<h:form> 
+				<h:form prependId="false"> 
 					<p:panel style="display: inline-block;">
-	
-	 				<h:form prependId="false"> 
-	 				
-	 					<p:dataTable var="person" value="#{usersBean.persons}" 
+
+	 					<p:dataTable id="table" var="person" value="#{usersBean.persons}" 
 	 						draggableColumns="true"
 	 						emptyMessage="Lista Vuota" 
 	 						paginator="true" 
@@ -46,9 +44,16 @@
 						    </p:column>
 						    
 						     <p:column>
-						     	<p:commandButton action="#{personBean.updatePerson}" icon="ui-icon-pencil">
-
+						     	<p:commandButton action="UPDATE"  icon="ui-icon-pencil"  ajax="false">
+						     	
+						     		<f:setPropertyActionListener target="#{personBean.person}" value="#{person}"/>
 						     	</p:commandButton>
+	
+						     	<p:commandButton  update="table" icon="ui-icon ui-icon-trash" action="#{personBean.delete}">
+        							<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert"/>
+        							<f:setPropertyActionListener target="#{personBean.person}" value="#{person}"/>
+   								 </p:commandButton>
+						     	
 						     </p:column>
 						    
 						</p:dataTable>
@@ -56,9 +61,14 @@
 						<br></br>
 						
 						<p:commandButton value="Registrazione" ajax="false" 
-										action="/ui/registration.xhtml" />
-					</h:form>
+										action="REGISTRATION" />
+		
 					</p:panel>
+					
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" >
+				        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="table" />
+				        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				    </p:confirmDialog>
 
 				</h:form>
 

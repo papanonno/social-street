@@ -19,4 +19,8 @@
 			class="socialstreet.controller.PersonServiceImpl">
 		</bean>
 		
+		<bean id="AuthenticationService"
+			class="socialstreet.controller.AuthenticationServiceImpl">
+		</bean>
+		
 </beans>

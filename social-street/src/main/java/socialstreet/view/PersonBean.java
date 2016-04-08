@@ -42,6 +42,7 @@ import socialstreet.view.autocompleter.City;
 		private City city = new City();
 		
 		@Getter
+		@Setter
 		private Person person = new Person();
 		
 		public String registration(){
@@ -64,13 +65,40 @@ import socialstreet.view.autocompleter.City;
 			return "USERS";
 		}
 		
-
-		public String updatePerson(){
+		public String update(){
 			
-
-			return "UPDATE";
+			
+			boolean esito = personService.updateUser(person);
+			
+			logger.info("[personBean] update started");
+						
+			if(!esito){
+			    ResourceBundle bundle = ResourceBundle.getBundle("locale.labels", FacesContext.getCurrentInstance().getViewRoot().getLocale());
+			    String text = bundle.getString("error.insert");
+				FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, text, text);
+				FacesContext.getCurrentInstance().addMessage("messages", facesMessage);
+				return "";
+			}
+			
+			return "USERS";
 		}
 		
-		
+		public void delete(){
+			
+			
+			boolean esito = personService.delete(person.getEmail());
+			
+			logger.info("[personBean] delete started");
+						
+			if(!esito){
+			    ResourceBundle bundle = ResourceBundle.getBundle("locale.labels", FacesContext.getCurrentInstance().getViewRoot().getLocale());
+			    String text = bundle.getString("error.delete");
+				FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, text, text);
+				FacesContext.getCurrentInstance().addMessage("messages", facesMessage);
+				
+			}
+	
+		}
+				
 
 }

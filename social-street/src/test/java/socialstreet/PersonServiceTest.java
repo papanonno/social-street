@@ -17,12 +17,12 @@ import socialstreet.person.UsersRequest;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/social-street-context.xml"})
+@ContextConfiguration(locations = {"/social-street-test-context.xml"})
 public class PersonServiceTest {
 	
 	private static String TES_NAME = "Pippo";
 
-	@Autowired 
+	@Autowired
 	PersonService personService;
 
 	@Before
@@ -95,5 +95,7 @@ public class PersonServiceTest {
 		personService.delete(TestHelper.EMAIL);
 		
  }
+	
+
 
 }

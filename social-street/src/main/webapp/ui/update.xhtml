@@ -34,12 +34,6 @@
 							    <p:selectOneMenu id="gender" value="#{personBean.person.gender}">
 						            <f:selectItems value="#{genderBean.genderValues}" />
 						        </p:selectOneMenu>
-						        <p:outputLabel value="#{msg['email']}" for="email" />
-								<p:inputText value="#{personBean.person.email}"
-									required="true" id="email"  />
-								<p:outputLabel value="#{msg['password']}" for="password" />
-								<p:password value="#{personBean.person.password}"
-									required="true" id="password" feedback="true" />
 									
 						        <ui:remove>
 							        <p:outputLabel value="#{msg['city']}" for="city" />
@@ -53,13 +47,13 @@
 
 						</h:panelGrid>
 						
-						<p:commandButton value="Registra" ajax="false"
+						<p:commandButton value="#{msg['save']}" ajax="false"
 							action="#{personBean.update}" />
 							
-						<p:commandButton value="Lista Utenti" ajax="false" immediate="true"
+						<p:commandButton value="Indietro" ajax="false" immediate="true"
 								action="USERS" />
 
-						
+
 					</p:panel>
 					
 

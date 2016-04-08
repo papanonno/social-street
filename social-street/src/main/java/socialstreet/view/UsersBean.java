@@ -23,10 +23,7 @@ import socialstreet.model.LazyPersonDataModel;
 		@ManagedProperty(value="#{PersonService}")
 		@Setter
 		private PersonService personService;
-		
-//		@Getter
-//		private List<Person> persons = new ArrayList<Person>();
-		
+				
 		@Getter
 		private LazyPersonDataModel persons;
 		
@@ -34,9 +31,7 @@ import socialstreet.model.LazyPersonDataModel;
 		public void init(){
 			
 			persons = new LazyPersonDataModel(personService);
-//			UsersRequest request = new UsersRequest();
-//			
-//			persons = personService.getPersons(request).getElements();
+
 		}
 
 }
