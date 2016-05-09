@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+ 	<ui:composition template="../template/common/commonLayout.xhtml"> 
+ 		<ui:define name="content"> 
+	<div style="text-align:center; margin-top: 15%;">
+		 <h:form id="form">
+	       <p:panel style="display: inline-block;">
+	       	<p:messages id="loginError" autoUpdate="true" closable="true"  /> 
+	       	<f:facet name="header">#{msg['login']} </f:facet>
+	       	<h:panelGrid columns="1" >
+	     		<h:panelGrid columns="2">
+	     		
+	     			<p:outputLabel value="#{msg['username']}" for="Username"/>
+	     			<p:inputText value="#{login.username}" required="true" id="Username" >
+	     			</p:inputText>
+	     			<p:outputLabel value="#{msg['password']}" for="Password"/>
+	     			<p:password value="#{login.password}" required="true" id="Password"/>
+	     								
+	     		</h:panelGrid>
+	       	</h:panelGrid>
+	      
+	       	<p:commandButton value="#{msg['login']}" action="#{login.login}" ajax="false"/> 	    
+	       </p:panel>
+	      
+	   </h:form>
+    </div>
+
+		</ui:define> 
+	</ui:composition> 
+</html>
