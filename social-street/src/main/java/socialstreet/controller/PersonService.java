@@ -9,11 +9,11 @@ import socialstreet.person.UsersResponse;
 @Service
 public interface PersonService {
 	
-	public boolean register(Person p);
+	public Boolean register(Person p);
 	
-	public boolean updateUser(Person person);
+	public Boolean updateUser(Person person);
 	
-	public boolean delete(String email);
+	public Boolean delete(String email);
 	
 	public Person getUserByEmail(String email);
 	

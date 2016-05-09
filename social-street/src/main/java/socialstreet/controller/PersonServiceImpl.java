@@ -47,7 +47,7 @@ public class PersonServiceImpl implements PersonService, Serializable {
 		
 	}
 
-	public boolean register(Person person) {
+	public Boolean register(Person person) {
 
 		SqlSession sqlSession = Utils.getSqlSession();
 		sqlSession.getConfiguration().addMapper(Person.class);
@@ -67,7 +67,7 @@ public class PersonServiceImpl implements PersonService, Serializable {
 	}
 
 
-	public boolean updateUser(Person person) {
+	public Boolean updateUser(Person person) {
 		SqlSession sqlSession = Utils.getSqlSession();
 		sqlSession.getConfiguration().addMapper(Person.class);
 		
@@ -87,7 +87,7 @@ public class PersonServiceImpl implements PersonService, Serializable {
 	}
 
 
-	public boolean delete(String email) {
+	public Boolean delete(String email) {
 		SqlSession sqlSession = Utils.getSqlSession();
 		sqlSession.getConfiguration().addMapper(Person.class);
 		
