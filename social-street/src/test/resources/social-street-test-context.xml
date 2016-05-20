@@ -10,9 +10,30 @@
 			http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 			
+			
+    <bean id="jsonHttpMessageConverter"
+
+        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+
+    <bean
+
+        class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+
+        <property name="messageConverters">
+
+            <util:list id="beanList">
+
+                <ref bean="jsonHttpMessageConverter" />
+
+            </util:list>
+
+        </property>
+
+    </bean>
+
 	   <!-- controller -->
 	   	<bean id="PersonService"
 			class="socialstreet.controller.PersonServiceImpl">
+			
 		</bean>
-
 </beans>
